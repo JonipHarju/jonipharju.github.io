@@ -1,0 +1,22 @@
+---
+import ThemeToggle from './ThemeToggle.astro';
+---
+
+<nav class="bg-pageBg dark:bg-pageBgDark text-textMain dark:text-textMainDark shadow-md">
+  <div class="container mx-auto flex justify-between items-center p-4">
+    
+    <div class="flex space-x-8">
+      <a href="/" class="text-primary dark:text-primaryDark font-semibold hover:text-accent dark:hover:text-accentDark">
+        Home
+      </a>
+      <a href="/blog" class="text-primary dark:text-primaryDark font-semibold hover:text-accent dark:hover:text-accentDark">
+        Blog
+      </a>
+      <a href="/about" class="text-primary dark:text-primaryDark font-semibold hover:text-accent dark:hover:text-accentDark">
+        About
+      </a>
+    </div>
+
+    <ThemeToggle />
+  </div>
+</nav>

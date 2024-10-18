@@ -1,11 +1,12 @@
 ---
+import Navbar from '../components/Navbar.astro';
+
 interface Props {
 	title: string;
 	description: string;
 }
 
 const { title, description } = Astro.props;
-import ThemeToggle from '../components/ThemeToggle.astro';
 
 ---
 
@@ -34,8 +35,8 @@ import ThemeToggle from '../components/ThemeToggle.astro';
 	
 
 	
-	<body class="w-full h-full bg-blue-600 text-black dark:bg-red-800 dark:text-white">
-		<ThemeToggle />
+	<body class="w-full h-full bg-pageBg text-textMain dark:bg-pageBgDark dark:text-textMainDark">
+		<Navbar/>
 		<slot />
 	</body>
 </html>

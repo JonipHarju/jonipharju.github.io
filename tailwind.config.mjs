@@ -5,8 +5,29 @@ export default {
   theme: {
     extend: {
       colors: {
-        pageBg: "#000",
-        textMain: "#fff",
+        // Background Colors
+        pageBg: "#f8fafc", // Light mode background
+        pageBgDark: "#1f2937", // Dark mode background
+
+        // Text Colors
+        textMain: "#111827", // Light mode text
+        textMainDark: "#e5e7eb", // Dark mode text
+
+        // Primary Colors
+        primary: "#6b7280", // Light mode primary
+        primaryDark: "#9ca3af", // Dark mode primary
+
+        // Accent Colors
+        accent: "#10b981", // Light mode accent (green)
+        accentDark: "#34d399", // Dark mode accent (lighter green)
+
+        // Secondary Accent Colors
+        secondaryAccent: "#3b82f6", // Light mode secondary (blue)
+        secondaryAccentDark: "#60a5fa", // Dark mode secondary (lighter blue)
+
+        // Button Background Colors
+        buttonBg: "#e5e7eb", // Light mode button background
+        buttonBgDark: "#374151", // Dark mode button background
       },
     },
   },
