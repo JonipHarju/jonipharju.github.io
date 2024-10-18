@@ -5,6 +5,8 @@ interface Props {
 }
 
 const { title, description } = Astro.props;
+import ThemeToggle from '../components/ThemeToggle.astro';
+
 ---
 
 <!doctype html>
@@ -17,8 +19,23 @@ const { title, description } = Astro.props;
 		<meta name="generator" content={Astro.generator} />
 		<title>{title}</title>
 		
+		<script>
+			if (
+			  localStorage.theme === 'dark' ||
+			  (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)
+			) {
+			  document.documentElement.classList.add('dark');
+			} else {
+			  document.documentElement.classList.remove('dark');
+			}
+		  </script>
+	  
 	</head>
-	<body class="w-full h-full bg-pageBg text-textMain">
+	
+
+	
+	<body class="w-full h-full bg-blue-600 text-black dark:bg-red-800 dark:text-white">
+		<ThemeToggle />
 		<slot />
 	</body>
 </html>

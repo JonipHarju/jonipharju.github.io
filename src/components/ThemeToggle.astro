@@ -1,0 +1,23 @@
+---
+console.log("Hello from theme toggle!");
+---
+<!-- Toggle theme button -->
+<button
+  type="button"
+  id="theme-selector"
+  class="px-4 py-2 rounded bg-buttonBg text-textMain"
+>
+  Toggle Theme
+</button>
+
+<script>
+  document.getElementById('theme-selector')?.addEventListener('click', () => {
+    if (localStorage.theme === 'dark') {
+      localStorage.theme = 'light';
+      document.documentElement.classList.remove('dark');
+    } else {
+      localStorage.theme = 'dark';
+      document.documentElement.classList.add('dark');
+    }
+  });
+</script>
