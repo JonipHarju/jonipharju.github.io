@@ -2,17 +2,19 @@
 import Layout from '../../layouts/Layout.astro';
 import { getCollection } from 'astro:content';
 import Prose from '../../components/Prose.astro';
+import type { Post } from '../../interfaces/post';
+import type { Track } from '../../interfaces/track';
 
 export async function getStaticPaths() {
   const allPosts = await getCollection('posts');
-  return allPosts.map((post) => ({
+  return allPosts.map((post: Post) => ({
     params: { slug: post.slug }, 
   }));
 }
 
 const allPosts = await getCollection('posts');
 const { slug } = Astro.params;
-const post = allPosts.find((post) => post.slug === slug);
+const post = allPosts.find((post: Post) => post.slug === slug);
 
 if (!post) {
   throw new Error(`Post not found: ${slug}`);
@@ -70,7 +72,7 @@ const { Content } = await post.render();
       <div class="bg-[#f8f8f8] dark:bg-[#18181b] text-black dark:text-white p-4 rounded-lg shadow-lg w-full">
         <h2 class="text-xl lg:text-2xl font-bold mb-4 border-b-2 border-red-500">Track List</h2>
         <ul class="divide-y divide-gray-300 dark:divide-gray-700">
-          {trackList.map((track, index) => (
+          {trackList.map((track : Track, index: number) => (
             <li class="py-2 flex justify-between text-sm lg:text-base">
               <span class="text-black dark:text-white">{index + 1}. {track.title}</span>
               <span class="text-gray-600 dark:text-gray-400">{track.length}</span>
