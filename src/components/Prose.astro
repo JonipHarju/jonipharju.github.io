@@ -1,0 +1,21 @@
+---
+
+---
+
+<!-- this prope coomponent is used for rendering the markdown content with the astro render() function -->
+ <!-- just wrap your <Content/> component with the <Prose> component and you are good to go.  -->
+<div
+class="prose dark:prose-invert
+prose-h1:font-extrabold prose-h1:text-4xl prose-h1:leading-tight prose-h1:mt-10 prose-h1:mb-6
+prose-h2:text-3xl prose-h2:font-semibold prose-h2:leading-snug prose-h2:mt-8 prose-h2:mb-4
+prose-h3:text-2xl prose-h3:font-medium prose-h3:mt-6 prose-h3:mb-4
+prose-p:text-lg prose-p:leading-relaxed prose-p:text-justify prose-p:mt-4 prose-p:mb-6
+prose-a:text-blue-400 prose-a:no-underline hover:prose-a:underline hover:prose-a:text-blue-300
+prose-img:rounded-xl prose-img:shadow-lg prose-img:mb-8
+  prose-blockquote:italic prose-blockquote:font-light prose-blockquote:border-l-2 prose-blockquote:border-red-500 prose-blockquote:pl-4 prose-blockquote:mt-8 prose-blockquote:mb-6
+prose-ul:mt-4 prose-ul:mb-6 prose-li:ml-6 prose-li:list-disc prose-li:text-lg
+prose-code:bg-gray-800 prose-code:text-green-400 prose-code:px-2 prose-code:py-1 prose-code:rounded-md prose-code:shadow-sm
+prose-pre:bg-gray-900 prose-pre:text-gray-100 prose-pre:p-4 prose-pre:rounded-lg prose-pre:shadow-inner prose-pre:overflow-x-auto
+prose-headings:underline prose-headings:decoration-red-500 dark:prose-headings:decoration-red-400 prose-headings:underline-offset-4">
+<slot />
+</div>
