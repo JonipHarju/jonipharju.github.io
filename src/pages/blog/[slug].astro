@@ -2,8 +2,10 @@
 import Layout from '../../layouts/Layout.astro';
 import { getCollection } from 'astro:content';
 import Prose from '../../components/Prose.astro';
+
 import type { Post } from '../../interfaces/post';
 import type { Track } from '../../interfaces/track';
+import { Image } from 'astro:assets';
 
 export async function getStaticPaths() {
   const allPosts = await getCollection('posts');
@@ -36,7 +38,6 @@ const {
 } = post.data;
 
 const { Content } = await post.render();
-
 ---
 
 <Layout title={title} description={description}>
@@ -45,7 +46,14 @@ const { Content } = await post.render();
     
     <!-- Left panel: Album image and content -->
     <div class="lg:w-2/3 w-full flex flex-col items-center lg:items-start">
-      <img src={image} alt={`Album cover for ${album}`} class="w-full h-auto rounded-lg mb-6 shadow-lg" />
+      <Image 
+        src={image} 
+        alt={`Album cover for ${album}`} 
+        width={500}  
+        height={500} 
+        loading={'eager'}
+        class="w-full h-auto rounded-lg mb-6 shadow-lg" 
+      />
       
       <Prose>
         <Content />
