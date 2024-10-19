@@ -1,0 +1,95 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { getCollection } from 'astro:content';
+import Prose from '../../components/Prose.astro';
+
+export async function getStaticPaths() {
+  const allPosts = await getCollection('posts');
+  return allPosts.map((post) => ({
+    params: { slug: post.slug }, 
+  }));
+}
+
+const allPosts = await getCollection('posts');
+const { slug } = Astro.params;
+const post = allPosts.find((post) => post.slug === slug);
+
+if (!post) {
+  throw new Error(`Post not found: ${slug}`);
+}
+
+const {
+  title,
+  description,
+  date,
+  album,
+  artist,
+  producer,
+  label,
+  length,
+  genres,
+  performers,
+  trackList,
+  image,
+} = post.data;
+
+const { Content } = await post.render();
+
+---
+
+<Layout title={title} description={description}>
+  <!-- Container for the main content -->
+  <main class="w-full flex flex-col lg:flex-row lg:space-x-12 max-w-4xl mx-auto py-8 px-4 items-center lg:items-start">
+    
+    <!-- Left panel: Album image and content -->
+    <div class="lg:w-2/3 w-full flex flex-col items-center lg:items-start">
+      <img src={image} alt={`Album cover for ${album}`} class="w-full h-auto rounded-lg mb-6 shadow-lg" />
+      
+      <Prose>
+        <Content />
+      </Prose>
+    </div>
+    
+    <!-- Right panel: Metadata -->
+    <div class="lg:w-1/3 w-full space-y-6 flex flex-col items-center lg:items-start">
+
+      <!-- Album Info box -->
+      <div class="bg-[#f8f8f8] dark:bg-zinc-900 text-black dark:text-white p-4 rounded-lg shadow-lg w-full">
+        <h3 class="text-xl font-semibold mb-4 border-b-2 border-red-500">Album Info</h3>
+        <div class="space-y-2 text-sm lg:text-base">
+          <p><span class="text-gray-600 dark:text-zinc-400">Artist:</span> {artist}</p>
+          <p><span class="text-gray-600 dark:text-zinc-400">Genre:</span> {genres.join(", ")}</p>
+          <p><span class="text-gray-600 dark:text-zinc-400">Release Date:</span> {date}</p>
+          <p><span class="text-gray-600 dark:text-zinc-400">Label:</span> {label}</p>
+          <p><span class="text-gray-600 dark:text-zinc-400">Producer:</span> {producer}</p>
+          <p><span class="text-gray-600 dark:text-zinc-400">Length:</span> {length}</p>
+        </div>
+      </div>
+
+      <!-- Track List box -->
+      <div class="bg-[#f8f8f8] dark:bg-[#18181b] text-black dark:text-white p-4 rounded-lg shadow-lg w-full">
+        <h2 class="text-xl lg:text-2xl font-bold mb-4 border-b-2 border-red-500">Track List</h2>
+        <ul class="divide-y divide-gray-300 dark:divide-gray-700">
+          {trackList.map((track, index) => (
+            <li class="py-2 flex justify-between text-sm lg:text-base">
+              <span class="text-black dark:text-white">{index + 1}. {track.title}</span>
+              <span class="text-gray-600 dark:text-gray-400">{track.length}</span>
+            </li>
+          ))}
+        </ul>
+      </div>
+
+      <!-- Album Credits (with label-value styling) -->
+      <div class="w-full">
+        <h2 class="text-xl lg:text-2xl font-bold mb-4 text-black dark:text-white border-b-2 border-red-500">Album Credits</h2>
+        <div class="space-y-2 text-sm lg:text-base">
+          <p><span class="text-gray-600 dark:text-zinc-400">Lead Vocals:</span> <span class="font-semibold text-black dark:text-white">James LaBrie</span></p>
+          <p><span class="text-gray-600 dark:text-zinc-400">Guitars:</span> <span class="font-semibold text-black dark:text-white">John Petrucci</span></p>
+          <p><span class="text-gray-600 dark:text-zinc-400">Keyboards:</span> <span class="font-semibold text-black dark:text-white">Jordan Rudess</span></p>
+          <p><span class="text-gray-600 dark:text-zinc-400">Bass:</span> <span class="font-semibold text-black dark:text-white">John Myung</span></p>
+          <p><span class="text-gray-600 dark:text-zinc-400">Drums:</span> <span class="font-semibold text-black dark:text-white">Mike Portnoy</span></p>
+        </div>
+      </div>
+    </div>
+  </main>
+</Layout>
