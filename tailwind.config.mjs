@@ -6,8 +6,8 @@ export default {
     extend: {
       colors: {
         // Background Colors
-        pageBg: "#f8fafc", // Light mode background
-        pageBgDark: "#1f2937", // Dark mode background
+        pageBg: "#fff", // Light mode background
+        pageBgDark: "#000", // Dark mode background
 
         // Text Colors
         textMain: "#111827", // Light mode text
