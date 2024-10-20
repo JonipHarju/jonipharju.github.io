@@ -4,21 +4,31 @@ import { getCollection } from 'astro:content';
 import Prose from '../../components/Prose.astro';
 import type { Track } from '../../interfaces/track';
 import { Image } from 'astro:assets';
+import type { CollectionEntry } from 'astro:content';
+
+
+type Post = CollectionEntry<'posts'>;
+
+
+
 
 export async function getStaticPaths() {
+  // Use the correct type for your posts collection
   const allPosts = await getCollection('posts');
-  return allPosts.map((post) => ({
+  return allPosts.map((post: Post) => ({
     params: { slug: post.slug },
   }));
 }
 
 const allPosts = await getCollection('posts');
 const { slug } = Astro.params;
-const post = allPosts.find((post) => post.slug === slug);
+const post = allPosts.find((post: Post) => post.slug === slug);
 
 if (!post) {
   throw new Error(`Post not found: ${slug}`);
 }
+
+
 
 const {
   title,
