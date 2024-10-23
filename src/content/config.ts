@@ -6,6 +6,7 @@ const posts = defineCollection({
     title: z.string(), // Post title
     description: z.string(), // Short description
     date: z.string(), // Date of publication
+    release_date: z.string().optional(), // Release date of the album
     album: z.string().optional(), // Album name
     artist: z.string().optional(), // Artist name
     producer: z.string().optional(), // Producer name

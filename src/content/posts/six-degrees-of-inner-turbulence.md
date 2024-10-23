@@ -1,13 +1,13 @@
 ---
 title: "Dream Theater – Six Degrees of Inner Turbulence Review"
 description: "Dream Theater's 'Six Degrees of Inner Turbulence' explores themes of human psychology and emotional turmoil, showcasing their complex and dynamic progressive metal style."
-date: "2024-10-19"
+date: "2023-9-19"
 album: "Six Degrees of Inner Turbulence"
 artist: "Dream Theater"
 producer: "John Petrucci, Mike Portnoy"
 label: "Elektra Records"
 length: "96 minutes"
-release_date: "2002-01-29"
+release_date: "October 19th 2024"
 genres: ["Progressive Metal", "Symphonic Rock"]
 performers:
   - "Lead Vocals: James LaBrie"
