@@ -1,5 +1,5 @@
 ---
-import ThemeToggle from './ThemeToggle.astro';
+import ThemeToggle from "./ThemeToggle.astro";
 ---
 
 <nav class="bg-white dark:bg-black shadow-lg sticky top-0 z-50 border-b border-gray-200 dark:border-gray-800">
@@ -57,12 +57,12 @@ import ThemeToggle from './ThemeToggle.astro';
 </nav>
 
 <script>
-  const mobileMenuButton = document.getElementById('mobile-menu-button');
-  const mobileMenu = document.getElementById('mobile-menu');
+  const mobileMenuButton = document.getElementById("mobile-menu-button");
+  const mobileMenu = document.getElementById("mobile-menu");
 
-  mobileMenuButton?.addEventListener('click', () => {
+  mobileMenuButton?.addEventListener("click", () => {
     if(!mobileMenu) return;
-    const isMenuOpen = mobileMenu.style.display === 'block';
-    mobileMenu.style.display = isMenuOpen ? 'none' : 'block';
+    const isMenuOpen = mobileMenu.style.display === "block";
+    mobileMenu.style.display = isMenuOpen ? "none" : "block";
   });
 </script>

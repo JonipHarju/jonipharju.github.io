@@ -1,32 +1,30 @@
 import { defineCollection, z } from "astro:content";
 
-// Define the schema for your 'posts' collection
 const posts = defineCollection({
   schema: z.object({
-    title: z.string(), // Post title
-    description: z.string(), // Short description
-    date: z.string(), // Date of publication
-    release_date: z.string().optional(), // Release date of the album
-    album: z.string().optional(), // Album name
-    artist: z.string().optional(), // Artist name
-    producer: z.string().optional(), // Producer name
-    label: z.string().optional(), // Record label
-    length: z.string().optional(), // Album length
-    genres: z.array(z.string()).optional(), // Genres as an array of strings
-    performers: z.array(z.string()).optional(), // Performers as an array of strings
+    title: z.string(),
+    description: z.string(),
+    date: z.string(),
+    release_date: z.string().optional(),
+    album: z.string().optional(),
+    artist: z.string().optional(),
+    producer: z.string().optional(),
+    label: z.string().optional(),
+    length: z.string().optional(),
+    genres: z.array(z.string()).optional(),
+    performers: z.array(z.string()).optional(),
     trackList: z
       .array(
         z.object({
-          title: z.string(), // Title of each track
-          length: z.string(), // Length of each track
-        })
+          title: z.string(),
+          length: z.string(),
+        }),
       )
-      .optional(), // Tracklist details
-    image: z.string().optional(), // Image URL for the album cover
+      .optional(),
+    image: z.string().optional(),
   }),
 });
 
-// Export the collectio ns
 export const collections = {
   posts,
 };
