@@ -27,6 +27,7 @@ const {
   title,
   description,
   date,
+  release_date,
   album,
   artist,
   producer,
@@ -73,7 +74,7 @@ const { Content } = await post.render();
         <div class="space-y-2 text-sm lg:text-base">
           <p><span class="text-gray-600 dark:text-zinc-400">Artist:</span> {artist}</p>
           <p><span class="text-gray-600 dark:text-zinc-400">Genre:</span> {genres.join(", ")}</p>
-          <p><span class="text-gray-600 dark:text-zinc-400">Release Date:</span> {date}</p>
+          <p><span class="text-gray-600 dark:text-zinc-400">Release Date:</span> {release_date}</p>
           <p><span class="text-gray-600 dark:text-zinc-400">Label:</span> {label}</p>
           <p><span class="text-gray-600 dark:text-zinc-400">Producer:</span> {producer}</p>
           <p><span class="text-gray-600 dark:text-zinc-400">Length:</span> {length}</p>
