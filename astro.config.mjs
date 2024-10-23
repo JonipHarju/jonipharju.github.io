@@ -7,7 +7,6 @@ import tailwind from "@astrojs/tailwind";
 export default defineConfig({
   // used for github pages
   site: "https://JonipHarju.github.io/music-blog",
-  base: "/",
   integrations: [tailwind()],
   devToolbar: {
     enabled: true,
