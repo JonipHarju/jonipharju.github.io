@@ -118,3 +118,54 @@ const months = [
     <button id="clear-filters" class="w-full p-2 bg-red-500 text-white rounded-lg">Clear Filters</button>
   </div>
 </div>
+<script>
+  const searchInput = document.getElementById("search-input") as HTMLInputElement;
+  const yearSelect = document.getElementById("year-select") as HTMLSelectElement;
+  const monthSelect = document.getElementById("month-select") as HTMLSelectElement;
+  const clearFiltersBtn = document.getElementById("clear-filters");
+
+  function filterResults() {
+    if (!searchInput || !yearSelect || !monthSelect) {
+      return;
+    }
+
+    const query = searchInput.value.toLowerCase();
+    const selectedYear = yearSelect.value;
+    const selectedMonth = monthSelect.value;
+
+    (document.querySelectorAll(".post") as NodeListOf<HTMLElement>).forEach(post => {
+      const album = post.getAttribute("data-album");
+      const artist = post.getAttribute("data-artist");
+      const genres = post.getAttribute("data-genres");
+      const performers = post.getAttribute("data-performers");
+      const dateStr = post.getAttribute("data-date");
+      const date = dateStr ? new Date(dateStr) : new Date();
+
+      if (!album || !artist || !genres || !performers) {
+        return;
+      }
+
+      const matchesQuery = album.includes(query) || artist.includes(query) || genres.includes(query) || performers.includes(query);
+      const matchesYear = selectedYear ? date.getFullYear() === parseInt(selectedYear) : true;
+      const matchesMonth = selectedMonth ? date.getMonth() === parseInt(selectedMonth) : true;
+
+      post.style.display = matchesQuery && matchesYear && matchesMonth ? "" : "none";
+    });
+  }
+
+  searchInput.addEventListener("input", filterResults);
+  yearSelect.addEventListener("change", filterResults);
+  monthSelect.addEventListener("change", filterResults);
+
+  if(clearFiltersBtn){
+    clearFiltersBtn.addEventListener("click", () => {
+    searchInput.value = "";
+    yearSelect.value = "";
+    monthSelect.value = "";
+    filterResults();
+  });
+  }
+ 
+
+  filterResults(); 
+</script>
