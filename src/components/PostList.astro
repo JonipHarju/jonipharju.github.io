@@ -52,7 +52,7 @@ const months = [
     />
 
     <div id="posts-list" class="flex flex-col gap-6">
-      {loadedImages.map((post) => {
+      {loadedImages.map((post, index) => {
         const postWithImage = post as Post & { importedImage: { default: string } | null };
 
         return (
@@ -70,6 +70,7 @@ const months = [
                 alt={`Album cover for ${postWithImage.data.album}`}
                 width={250}
                 height={250}
+                loading={index < 4 ? "eager" : "lazy"}
                 class="object-cover w-full sm:w-[250px] h-auto sm:h-[250px] flex-shrink-0"
               />
             ) : (
